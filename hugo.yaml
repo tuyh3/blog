@@ -1,0 +1,117 @@
+baseURL: "https://tuyh3.github.io/blog/"
+title: "tuyh3 技术站"
+theme: "PaperMod"
+languageCode: "zh-cn"
+defaultContentLanguage: "zh"
+enableRobotsTXT: true
+enableGitInfo: true
+hasCJKLanguage: true
+
+paginate: 10
+
+permalinks:
+  posts: "/posts/:year/:month/:slug/"
+  notes: "/notes/:year/:month/:slug/"
+  logs: "/logs/:year/:month/:slug/"
+  projects: "/projects/:slug/"
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+taxonomies:
+  tag: tags
+  category: categories
+  series: series
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: false
+  highlight:
+    noClasses: false
+    codeFences: true
+    guessSyntax: true
+    lineNos: false
+    style: github
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  env: production
+  description: "AI 工程化、代码库理解、RAG、DBA/SRE、技术文档与个人学习系统。"
+  author: "tuyh3"
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  comments: false
+  hideFooter: false
+  disableSpecial1stPost: true
+  disableScrollToTop: false
+  DateFormat: "2006-01-02"
+  mainSections:
+    - posts
+    - notes
+    - logs
+    - projects
+  homeInfoParams:
+    Title: "把技术积累公开化、结构化、可复用。"
+    Content: "这里记录 AI 工程化、代码库理解、RAG、DBA/SRE、技术文档、个人学习系统，以及少量金融学习和交易复盘。目标不是日记流，而是长期维护的公开技术信用资产。"
+  socialIcons:
+    - name: github
+      url: "https://github.com/tuyh3"
+  assets:
+    disableHLJS: true
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 2
+    keys:
+      - title
+      - permalink
+      - summary
+      - content
+
+languages:
+  zh:
+    languageName: "简体中文"
+    weight: 1
+    menu:
+      main:
+        - name: "文章"
+          url: "/posts/"
+          weight: 10
+        - name: "笔记"
+          url: "/notes/"
+          weight: 20
+        - name: "日志"
+          url: "/logs/"
+          weight: 30
+        - name: "项目"
+          url: "/projects/"
+          weight: 40
+        - name: "关于"
+          url: "/about/"
+          weight: 50
+        - name: "现在"
+          url: "/now/"
+          weight: 60
+        - name: "路线图"
+          url: "/roadmap/"
+          weight: 70
+        - name: "搜索"
+          url: "/search/"
+          weight: 80
