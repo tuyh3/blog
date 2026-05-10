@@ -7,6 +7,10 @@ enableRobotsTXT: true
 enableGitInfo: true
 hasCJKLanguage: true
 
+disableKinds:
+  - taxonomy
+  - term
+
 pagination:
   pagerSize: 10
 
@@ -21,11 +25,6 @@ outputs:
     - HTML
     - RSS
     - JSON
-
-taxonomies:
-  tag: tags
-  category: categories
-  series: series
 
 markup:
   goldmark:

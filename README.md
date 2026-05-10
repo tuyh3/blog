@@ -49,6 +49,13 @@ http://localhost:1313/blog/
 
 ## 新建内容
 
+日常写作不用先想分类和标签。只需要先选一个粗目录：
+
+- `posts/`：准备整理成正式文章时使用。
+- `notes/`：大多数想法、摘记、问题清单先放这里。
+- `logs/`：过程记录、学习记录、交易学习日志。
+- `projects/`：项目作品页。
+
 正式文章：
 
 ```bash
@@ -74,6 +81,10 @@ hugo new projects/my-project.md
 ```
 
 新建后把 front matter 里的 `draft: true` 改成 `draft: false` 才会在生产构建中发布。
+
+默认模板不要求填写 `tags` 或 `categories`。需要专题整理时，后续再补，不要在写作开始前消耗注意力。
+
+当前站点暂时关闭了标签和分类页生成。日常检索主要依赖目录、标题、摘要和站内搜索。
 
 ## 部署到 GitHub Pages
 

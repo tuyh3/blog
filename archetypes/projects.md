@@ -3,10 +3,6 @@ title: "{{ replace .File.ContentBaseName "-" " " | title }}"
 date: "{{ .Date }}"
 draft: true
 summary: ""
-tags: []
-categories:
-  - "项目"
-project_status: "idea"
 repo: ""
 demo: ""
 ---

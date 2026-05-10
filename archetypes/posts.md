@@ -3,10 +3,6 @@ title: "{{ replace .File.ContentBaseName "-" " " | title }}"
 date: "{{ .Date }}"
 draft: true
 summary: ""
-tags: []
-categories:
-  - "技术文章"
-series: []
 ---
 
 ## 问题

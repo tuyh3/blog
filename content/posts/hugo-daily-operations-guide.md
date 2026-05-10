@@ -4,13 +4,6 @@ date: "2026-05-10T00:00:00+05:00"
 draft: false
 slug: "hugo-daily-operations-guide"
 summary: "给第一次使用 Hugo 的自己：从目录结构、本地启停、写文章、搜索、Git 管理到 GitHub Pages 部署的日常操作说明。"
-tags:
-  - "Hugo"
-  - "GitHub Pages"
-  - "PaperMod"
-  - "个人网站"
-categories:
-  - "技术文章"
 ---
 
 这篇文章是写给第一次使用 Hugo 维护个人技术站的自己。目标不是把 Hugo 所有功能讲完，而是覆盖这个站点最常用、最容易忘、最容易出错的日常操作。
@@ -113,7 +106,7 @@ http://localhost:1313/blog/
 
 Hugo server 启动后会监听文件变化。你修改文章并保存，浏览器通常会自动刷新。
 
-如果本地页面里的菜单、上一篇/下一篇、标签链接自动跳到 `https://tuyh3.github.io/blog/...`，说明当前 Hugo server 没有加载 `hugo.local.yaml`，仍在使用生产 `baseURL`。停止服务后用上面的完整命令重新启动。
+如果本地页面里的菜单、上一篇/下一篇等链接自动跳到 `https://tuyh3.github.io/blog/...`，说明当前 Hugo server 没有加载 `hugo.local.yaml`，仍在使用生产 `baseURL`。停止服务后用上面的完整命令重新启动。
 
 ## 4. 停止 Hugo 服务
 
@@ -182,10 +175,6 @@ title: "My First Real Article"
 date: "2026-05-10T00:00:00+05:00"
 draft: true
 summary: ""
-tags: []
-categories:
-  - "技术文章"
-series: []
 ---
 ```
 
@@ -196,6 +185,10 @@ series: []
 3. 把 `draft: true` 改成 `draft: false`。
 
 如果 `draft: true`，生产构建默认不会发布这篇文章；本地加 `-D` 时才能看到。
+
+不需要先填 `tags`、`categories` 或 `series`。这个站点默认采用“先写后整理”的方式：目录只负责大方向，检索交给站内搜索，专题和标签以后内容多了再补。
+
+当前站点暂时关闭了标签和分类页生成。这样写作时不用维护标签体系，也不会因为标签命名不一致产生额外负担。
 
 ## 7. 新建短笔记、日志和项目页
 
@@ -217,15 +210,15 @@ hugo new logs/2026-05-10-rag-learning-log.md
 hugo new projects/codebase-reading-agent.md
 ```
 
-建议分工：
+极简分工：
 
 - `posts/`：已经整理成体系、适合公开传播的文章。
-- `notes/`：想法、问题、阅读摘记、未成文的技术线索。
+- `notes/`：默认入口。想法、问题、阅读摘记、未成文的技术线索都可以先放这里。
 - `logs/`：过程记录，例如开发日志、学习日志、交易学习日志。
 - `projects/`：项目作品页，记录项目定位、技术栈、当前状态、仓库和 Demo。
 - `pages/`：长期固定页面，例如 About、Now、Roadmap。
 
-不要一开始过度追求分类完美。先写，再根据真实内容增长调整结构。
+不要一开始追求分类完美。先写，再根据真实内容增长调整结构。判断不出来放哪里时，优先放 `notes/`。
 
 ## 8. 修改菜单和站点信息
 

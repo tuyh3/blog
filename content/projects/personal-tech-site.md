@@ -4,13 +4,6 @@ date: "2026-05-10T00:00:00+05:00"
 draft: false
 slug: "personal-tech-site"
 summary: "用 Hugo 和 GitHub Pages 搭建的个人技术博客与作品集网站。"
-tags:
-  - "Hugo"
-  - "GitHub Pages"
-  - "PaperMod"
-categories:
-  - "项目"
-project_status: "active"
 repo: "https://github.com/tuyh3/blog"
 demo: "https://tuyh3.github.io/blog/"
 ---

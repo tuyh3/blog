@@ -4,11 +4,6 @@ date: "2026-05-10T00:00:00+05:00"
 draft: false
 slug: "rag-question-list"
 summary: "一组后续可以展开成文章或实验的 RAG 问题。"
-tags:
-  - "RAG"
-  - "AI 工程化"
-categories:
-  - "短笔记"
 ---
 
 后续值得展开的问题：
