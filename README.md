@@ -56,6 +56,15 @@ http://localhost:1313/blog/
 - `logs/`：过程记录、学习记录、交易学习日志。
 - `projects/`：项目作品页。
 
+如果主题非常明确，可以额外加一个粗分类：
+
+```yaml
+topics:
+  - "ai"
+```
+
+当前建议只使用少量稳定主题：`ai`、`oracle`、`sre`、`site`、`finance`。判断不出来就不填，后续整理时再补。
+
 正式文章：
 
 ```bash
@@ -82,9 +91,7 @@ hugo new projects/my-project.md
 
 新建后把 front matter 里的 `draft: true` 改成 `draft: false` 才会在生产构建中发布。
 
-默认模板不要求填写 `tags` 或 `categories`。需要专题整理时，后续再补，不要在写作开始前消耗注意力。
-
-当前站点暂时关闭了标签和分类页生成。日常检索主要依赖目录、标题、摘要和站内搜索。
+默认模板不要求填写 `tags` 或 `categories`。日常检索主要依赖粗主题、目录、标题、摘要和站内搜索。
 
 ## 部署到 GitHub Pages
 

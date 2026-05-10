@@ -4,6 +4,8 @@ date: "2026-05-10T00:00:00+05:00"
 draft: false
 slug: "site-bootstrap"
 summary: "记录个人技术站第一版的初始化决策。"
+topics:
+  - "site"
 ---
 
 ## 今日目标

@@ -4,6 +4,8 @@ date: "2026-05-10T00:00:00+05:00"
 draft: false
 slug: "public-technical-credit-asset"
 summary: "第一篇示例文章：说明这个站点为什么不是普通日记博客，而是长期维护的技术信用资产。"
+topics:
+  - "site"
 ---
 
 这个站点的目标不是记录流水账，而是把长期技术积累公开化、结构化、可复用。

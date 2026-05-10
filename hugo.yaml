@@ -7,10 +7,6 @@ enableRobotsTXT: true
 enableGitInfo: true
 hasCJKLanguage: true
 
-disableKinds:
-  - taxonomy
-  - term
-
 pagination:
   pagerSize: 10
 
@@ -25,6 +21,9 @@ outputs:
     - HTML
     - RSS
     - JSON
+
+taxonomies:
+  topic: topics
 
 markup:
   goldmark:
@@ -112,6 +111,9 @@ languages:
         - name: "路线图"
           url: "/roadmap/"
           weight: 70
+        - name: "主题"
+          url: "/topics/"
+          weight: 80
         - name: "搜索"
           url: "/search/"
-          weight: 80
+          weight: 90
