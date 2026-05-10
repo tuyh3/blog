@@ -1,0 +1,4 @@
+baseURL: "http://localhost/blog/"
+
+params:
+  env: development

@@ -71,6 +71,7 @@ cd /Users/tuyh3/Documents/blog
 ├── .github/workflows/deploy.yml # GitHub Pages 自动部署
 ├── .gitignore                   # Git 忽略规则
 ├── hugo.yaml                    # Hugo 主配置
+├── hugo.local.yaml              # 本地预览配置，不影响 GitHub Pages 部署
 └── README.md                    # 仓库使用说明
 ```
 
@@ -78,6 +79,7 @@ cd /Users/tuyh3/Documents/blog
 
 - `content/`：写内容
 - `hugo.yaml`：改菜单、站点名、地址、主题参数
+- `hugo.local.yaml`：覆盖本地预览地址，避免本地链接跳到线上站点
 - `README.md`：给自己和未来维护者看的操作说明
 - `.github/workflows/deploy.yml`：自动部署配置
 
@@ -92,7 +94,7 @@ cd /Users/tuyh3/Documents/blog
 启动本地预览：
 
 ```bash
-hugo server -D --bind 127.0.0.1 --port 1313 --baseURL http://localhost:1313/blog/ --appendPort=false
+hugo server -D --config hugo.yaml,hugo.local.yaml --bind 127.0.0.1 --port 1313
 ```
 
 然后打开：
@@ -104,12 +106,14 @@ http://localhost:1313/blog/
 这里几个参数的作用：
 
 - `-D`：包含 draft 草稿内容，方便本地预览未发布文章。
+- `--config hugo.yaml,hugo.local.yaml`：先加载生产配置，再用本地配置覆盖 `baseURL`。
 - `--bind 127.0.0.1`：只在本机访问。
 - `--port 1313`：使用 Hugo 默认常见端口。
-- `--baseURL http://localhost:1313/blog/`：本地预览时模拟线上 `/blog/` 子路径。
-- `--appendPort=false`：避免 Hugo 在 URL 里重复追加端口。
+- 本地配置里的 `baseURL` 是 `http://localhost/blog/`，Hugo server 会自动补上端口，最终访问地址是 `http://localhost:1313/blog/`。
 
 Hugo server 启动后会监听文件变化。你修改文章并保存，浏览器通常会自动刷新。
+
+如果本地页面里的菜单、上一篇/下一篇、标签链接自动跳到 `https://tuyh3.github.io/blog/...`，说明当前 Hugo server 没有加载 `hugo.local.yaml`，仍在使用生产 `baseURL`。停止服务后用上面的完整命令重新启动。
 
 ## 4. 停止 Hugo 服务
 
@@ -156,7 +160,7 @@ hugo --gc --minify
 - 发布前检查是否能正常生成。
 - 排查 GitHub Actions 部署失败。
 
-如果只是写文章预览，通常用 `hugo server -D`；如果要确认生产构建，用 `hugo --gc --minify`。
+如果只是写文章预览，通常用上面的完整 `hugo server` 命令；如果要确认生产构建，用 `hugo --gc --minify`。
 
 ## 6. 新建正式文章
 
@@ -422,7 +426,7 @@ https://tuyh3.github.io/blog/
 ```bash
 cd /Users/tuyh3/Documents/blog
 
-hugo server -D --bind 127.0.0.1 --port 1313 --baseURL http://localhost:1313/blog/ --appendPort=false
+hugo server -D --config hugo.yaml,hugo.local.yaml --bind 127.0.0.1 --port 1313
 ```
 
 打开本地预览：

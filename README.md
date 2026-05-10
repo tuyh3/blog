@@ -38,7 +38,7 @@ git clone --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/Pa
 启动本地预览：
 
 ```bash
-hugo server -D
+hugo server -D --config hugo.yaml,hugo.local.yaml --bind 127.0.0.1 --port 1313
 ```
 
 默认访问：
@@ -87,6 +87,6 @@ workflow 会在 GitHub Actions 里安装 Hugo Extended，并在构建时拉取 P
 ## 维护原则
 
 - 内容优先，不做复杂前端。
-- Hugo 配置集中在 `hugo.yaml`。
+- 生产配置集中在 `hugo.yaml`，本地预览覆盖配置放在 `hugo.local.yaml`。
 - 主题不直接提交到仓库，按需拉取。
 - VPS 后续只用于项目 Demo、API 或实验服务，不用于第一版博客部署。
