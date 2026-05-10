@@ -1,13 +1,14 @@
 baseURL: "https://tuyh3.github.io/blog/"
 title: "tuyh3 技术站"
 theme: "PaperMod"
-languageCode: "zh-cn"
+locale: "zh-CN"
 defaultContentLanguage: "zh"
 enableRobotsTXT: true
 enableGitInfo: true
 hasCJKLanguage: true
 
-paginate: 10
+pagination:
+  pagerSize: 10
 
 permalinks:
   posts: "/posts/:year/:month/:slug/"
@@ -87,7 +88,7 @@ params:
 
 languages:
   zh:
-    languageName: "简体中文"
+    label: "简体中文"
     weight: 1
     menu:
       main:
