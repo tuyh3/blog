@@ -5,7 +5,7 @@ draft: false
 slug: "hugo-daily-operations-guide"
 summary: "给第一次使用 Hugo 的自己：从目录结构、本地启停、写文章、搜索、Git 管理到 GitHub Pages 部署的日常操作说明。"
 topics:
-  - "site"
+  - "Hugo blog"
 ---
 
 这篇文章是写给第一次使用 Hugo 维护个人技术站的自己。目标不是把 Hugo 所有功能讲完，而是覆盖这个站点最常用、最容易忘、最容易出错的日常操作。

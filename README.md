@@ -93,6 +93,44 @@ hugo new projects/my-project.md
 
 默认模板不要求填写 `tags` 或 `categories`。日常检索主要依赖粗主题、目录、标题、摘要和站内搜索。
 
+## 日常学习笔记流程
+
+建议把学习内容分成两个层级：
+
+- 每天先写 `notes/`：只记录事实、问题、收获和后续线索，不追求成文。
+- 每周再写 `posts/`：从本周笔记里提炼一个完整主题，形成可长期复用的文章。
+
+每日学习总结：
+
+```bash
+hugo new content -k learning-note notes/2026-05-12-learning-summary.md
+```
+
+写的时候优先补齐四块内容：
+
+- 今天学了什么。
+- 关键收获是什么。
+- 还有哪些卡点或问题。
+- 哪些内容值得周末整理成文章。
+
+如果当天笔记想公开展示，把 front matter 里的 `draft: true` 改成 `draft: false`。如果只是给周末整理用，可以先保持草稿状态。
+
+每周整理正式文章：
+
+```bash
+hugo new content -k weekly-learning-article posts/2026-05-17-weekly-learning-summary.md
+```
+
+整理时不要把每日笔记简单拼接到文章里。建议按这个顺序处理：
+
+1. 先扫一遍本周所有学习笔记，标出重复出现的问题和概念。
+2. 选一个最值得沉淀的主题，其他碎片先留在笔记里。
+3. 把每日记录改写成“问题 -> 结论 -> 方法 -> 案例 -> 未解决问题”的结构。
+4. 给文章补 `summary` 和合适的 `topics`。
+5. 预览确认后，把文章的 `draft: true` 改成 `draft: false`。
+
+这个流程的目标是降低每天记录的压力，同时保证每周至少沉淀一篇更完整的技术资产。
+
 ## 部署到 GitHub Pages
 
 1. 在 GitHub 创建仓库 `tuyh3/blog`。
