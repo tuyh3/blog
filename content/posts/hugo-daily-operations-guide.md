@@ -5,7 +5,7 @@ draft: false
 slug: "hugo-daily-operations-guide"
 summary: "给第一次使用 Hugo 的自己：从目录结构、本地启停、写文章、搜索、Git 管理到 GitHub Pages 部署的日常操作说明。"
 topics:
-  - "Hugo blog"
+  - "hugo-blog"
 ---
 
 这篇文章是写给第一次使用 Hugo 维护个人技术站的自己。目标不是把 Hugo 所有功能讲完，而是覆盖这个站点最常用、最容易忘、最容易出错的日常操作。
@@ -204,6 +204,7 @@ topics:
 - `sre`：稳定性工程、运维体系、故障复盘、监控告警。
 - `site`：个人网站、写作系统、公开技术信用资产。
 - `finance`：金融学习、股票和加密货币交易学习日志。
+- `hugo-blog`：Hugo、PaperMod、GitHub Pages、站点配置和写作流程。
 
 判断不出来就不填。不要为了归类而停下写作，后续整理时可以批量补。
 

@@ -4,7 +4,7 @@ date: "{{ .Date }}"
 draft: true
 summary: ""
 slug: "{{ .File.ContentBaseName }}"
-# topics: ["ai"] # 可选粗分类：ai / oracle / sre / site / finance
+# topics: ["ai"] # 可选粗分类：ai / oracle / sre / site / finance / hugo-blog
 ---
 
 ## 本周主题

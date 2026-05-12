@@ -63,7 +63,7 @@ topics:
   - "ai"
 ```
 
-当前建议只使用少量稳定主题：`ai`、`oracle`、`sre`、`site`、`finance`。判断不出来就不填，后续整理时再补。
+当前建议只使用少量稳定主题：`ai`、`oracle`、`sre`、`site`、`finance`、`hugo-blog`。判断不出来就不填，后续整理时再补。
 
 正式文章：
 
