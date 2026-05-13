@@ -1,7 +1,7 @@
 ---
 title: "CLAUDE.md 使用笔记:从 /init 到日常工作流"
 date: "2026-05-12T11:46:44+05:00"
-draft: true
+draft: false
 slug: "claude-md-usage-notes"
 summary: "整理 CLAUDE.md 的定位、/init 的正确用法、应该写什么、几个进阶用法,以及最容易踩的坑。"
 topics: ["ai"]
