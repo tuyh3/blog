@@ -12,7 +12,7 @@ Skill 不是普通 prompt，也不是 CLAUDE.md；它是一套可复用的“专
 
 ## 如何创建一个优秀的 Skill
 
-**建议按 5 步来创建 skill：**先明确核心需求，再写 skill 名称，再写 description（描述），再写主 instructions（操作指南），最后上传/安装。遵循这种结构化的方法，培养能够更可靠地触发的技能。
+**建议按 5 步来创建 skill**：先明确核心需求，再写 skill 名称，再写 description（描述），再写主 instructions（操作指南），最后上传/安装。遵循这种结构化的方法，培养能够更可靠地触发的技能。
 
 `SKILL.md` 里真正影响 Claude 是否触发这个 skill 的，是 **name 和 description**；instructions 主要决定触发后怎么执行。
 
