@@ -1,7 +1,7 @@
 ---
 title: "MCP 入门：模型上下文协议讲了什么"
 date: "2026-05-13T11:46:06+05:00"
-draft: true
+draft: false
 slug: "mcp-introduction"
 summary: "MCP（模型上下文协议）入门笔记：Host / Client / Server 三个角色，Resources / Tools / Prompts 三类能力，以及它们各自解决什么问题。"
 topics: ["ai"]
