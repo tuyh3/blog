@@ -2,7 +2,7 @@
 title: "如何创建并使用Skills"
 date: "2026-05-13T06:32:38+05:00"
 draft: false
-summary: "读 Anthropic 官方文章后整理的 skill 创建笔记：5 步流程、SKILL.md 三要素，以及从 DOCX skill 学到的 menu approach。"
+summary: "读 Anthropic 官方文章后整理的 skill 创建笔记：核心 5 步、Claude Code 安装路径、SKILL.md 三要素，以及从 DOCX skill 学到的 menu approach。"
 topics: ["ai"]
 ---
 
@@ -10,11 +10,34 @@ Skill 不是普通 prompt，也不是 CLAUDE.md；它是一套可复用的“专
 
 **Skill 定义**：用于特定任务或领域的自定义指令，可以扩展 Claude 的能力；通过 `SKILL.md` 文件，你是在教 Claude 如何更有效地处理某类具体场景。它的价值在于沉淀组织知识、标准化输出、处理复杂多步骤流程，避免你每次重复解释。
 
+一个最小的 `SKILL.md` 大概长这样：
+
+```markdown
+---
+name: summarize-changes
+description: Summarize uncommitted git changes and flag risky edits. Use when the user asks what changed, wants a commit message, or asks to review their diff.
+---
+
+## Instructions
+
+Summarize the changes in two or three bullet points, then list any risks you notice.
+```
+
+上半部分是 YAML front matter，用来告诉 Claude 这个 skill 是什么、什么时候该用；下半部分是 Markdown instructions，用来告诉 Claude 触发后怎么做。
+
 ## 如何创建一个优秀的 Skill
 
-**建议按 5 步来创建 skill**：先明确核心需求，再写 skill 名称，再写 description（描述），再写主 instructions（操作指南），最后上传/安装。遵循这种结构化的方法，培养能够更可靠地触发的技能。
+**创建 skill 的核心 5 步**：先明确核心需求，再写 skill 名称，再写 description（描述），再写主 instructions（操作指南），最后上传/安装。上线前还要补上测试和迭代，这两步决定它在真实场景里是否稳定。
 
-`SKILL.md` 里真正影响 Claude 是否触发这个 skill 的，是 **name 和 description**；instructions 主要决定触发后怎么执行。
+在官方博客的简化说法里，`SKILL.md` 中真正影响 Claude 是否触发这个 skill 的，是 **name 和 description**；instructions 主要决定触发后怎么执行。
+
+但在当前 Claude Code 里要说得更细一点：
+
+- `description` 是自动触发的核心入口，Claude 会根据它判断当前任务是否相关。
+- `name` 影响展示和手动调用；如果不写，Claude Code 通常使用 skill 目录名。
+- `when_to_use` 可以补充触发场景。
+- `disable-model-invocation: true` 可以禁止 Claude 自动触发，只允许用户用 `/skill-name` 手动调用。
+- `paths`、`skillOverrides` 这类配置也会影响某个 skill 是否可见、是否自动触发。
 
 **skill 不是越大越好**。避免把无关内容都塞进上下文，应该用menu approach（菜单式组织法 / 菜单式 skill 结构）：主 `SKILL.md` 只写入口和选项，细节拆到其他文件，让 Claude 根据任务只读取需要的部分。
 
@@ -104,7 +127,7 @@ description: >
 
 ### 4. 写主 instructions
 
- instructions 要清晰、易于阅读且便于操作。请使用 Markdown 标题、项目符号列表列出选项，并使用代码块提供示例。
+instructions 要清晰、易于阅读且便于操作。请使用 Markdown 标题、项目符号列表列出选项，并使用代码块提供示例。
 
 结构清晰，层级分明：概述、前提条件、执行步骤、示例、错误处理和局限性。将复杂的流程分解为具有明确输入和输出的独立阶段。
 
@@ -125,13 +148,45 @@ description: >
 
 根据你所在 Claude 平台上的技能类型，以下是如何上传技能以供使用： 
 
-**Claude Code**：项目根目录下创建 skills/ 目录，并在其中添加包含 SKILL.md 文件的技能文件夹。安装插件时，Claude 会自动发现并使用这些文件。示例结构：
+**Claude Code**：常见有三种放法。
+
+个人级 skill 放在：
+
+```text
+~/.claude/skills/<skill-name>/SKILL.md
+```
+
+项目级 skill 放在项目目录下：
+
+```text
+.claude/skills/<skill-name>/SKILL.md
+```
+
+插件级 skill 放在插件目录下：
+
+```text
+<plugin>/skills/<skill-name>/SKILL.md
+```
+
+所以普通项目里不要直接写成根目录 `skills/`，更准确的是 `.claude/skills/`。插件包里才常见 `skills/<skill-name>/SKILL.md` 这种结构。
+
+示例结构：
 
 ```
 my-project/
-├── skills/
-│   └── my-skill/
-│       └── SKILL.md
+├── .claude/
+│   └── skills/
+│       └── my-skill/
+│           └── SKILL.md
+```
+
+或者个人级：
+
+```
+~/.claude/
+└── skills/
+    └── my-skill/
+        └── SKILL.md
 ```
 
 **Claude app**：前往**“设置”**并添加您的自定义技能。自定义技能需要启用代码执行功能的 Pro、Max、Team 或 Enterprise 套餐。在此处上传的技能仅供每个用户使用，不会在组织范围内共享，管理员也无法集中管理。
@@ -146,6 +201,30 @@ curl -X POST "https://api.anthropic.com/v1/skills" \
   -F "display_title=My Skill Name" \
   -F "files[]=@my-skill/SKILL.md;filename=my-skill/SKILL.md"
 ```
+
+注意：API 里“上传 skill”和“使用 skill”是两步。上传后会得到一个 `skill_id`，真正调用 Claude API 时，还要在 `container.skills` 里引用这个 `skill_id`，并启用 code execution / skills 相关 beta。也就是说，它不是“上传一次后所有 API 请求都自动触发”。
+
+另外，Claude.ai、Claude Code、Claude API 之间不会自动同步 custom skill：
+
+```
+Claude.ai 上传的 skill ≠ Claude Code 自动可用
+Claude Code 文件系统里的 skill ≠ API 自动可用
+API 上传的 skill ≠ Claude.ai 自动可用
+```
+
+你要在哪个入口使用，就要在对应入口分别配置。
+
+### 安全注意事项
+
+skill 本质上是在给 AI 增加可复用的操作说明，甚至可能附带脚本、模板、工具权限，所以不能只看“能不能用”，还要看“是否安全”。
+
+几个底线：
+
+1. 不要把 API key、密码、token、私钥写进 `SKILL.md` 或附加文件。
+2. 第三方 skill 启用前要先读一遍，尤其是包含脚本、shell 命令、外部下载逻辑的 skill。
+3. Claude Code 里的 `allowed-tools` 是预授权能力，不是限制能力。它可以减少确认弹窗，但也意味着这个 skill 触发后更容易直接执行对应工具。
+4. 项目级 `.claude/skills/` 会随着仓库共享，信任一个仓库前，要把里面的 skills 当成可执行配置来审查。
+5. 如果某个流程有生产发布、删除数据、改权限这类高风险操作，不要只靠自然语言提醒，应该配合更明确的权限规则、人工确认或 hooks。
 
 ### 6. 测试与验证 Skill
 
